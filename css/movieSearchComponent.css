@@ -1,0 +1,67 @@
+/* Author: Brian M. Kueck @briankueck */
+
+.movieSearchComponent {
+	
+}
+
+.movieSearchComponent input {
+	border: 1px solid gray;
+    border-radius: 4px;
+	line-height: 12pt;
+	padding: 5px 8px;
+}
+
+.movieSearchComponent .movie {
+	height: 265px;
+    margin: 15px;
+	text-align: center;
+	width: 150px;
+}
+
+.movieSearchComponent .movie .poster {
+	width: 150px;
+}
+
+.movieSearchComponent .movie .title {
+	font-weight: bold;
+	height: 44px;
+	overflow: hidden;
+	width: 150px;
+}
+
+.movieSearchComponent .hidden {
+	display: none;
+}
+
+.movieSearchComponent .overlay {
+    font-size: 8pt;
+    height: 225px;
+	opacity: 0.85;
+    padding: 8px 5px;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+}
+
+/* I could have done this for the hover effects, but I was building the JavaScript code & wanted to show off my JS work for binding event listeners dynamically.
+.movieSearchComponent .movie .overlay { 
+	display: none; 
+}
+
+.movieSearchComponent .movie:hover .overlay { 
+	display: block; 
+}
+*/
+
+.movieSearchComponent .overlay.red {
+    background-color: #FFDDDD;
+}
+
+.movieSearchComponent .overlay.green {
+    background-color: #DDFFDD;
+}
+
+.movieSearchComponent .overlay.blue {
+    background-color: #DDDDFF;
+}
+

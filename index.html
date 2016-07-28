@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Demo</title>
+
+	<!-- FYI -->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Brian M. Kueck, @briankueck">
+
+	<!-- SEO information. Search engines waffle back & forth on what is useful here. Search bots can see all of it. I should know. I wrote one! So extra text doesn't hurt here. -->
+	<meta name="robots" content="index, follow">
+	<meta name="description" content="This will search for movies & display an Ajax results grid.">
+	<meta name="keywords" content="Movies Demo, Movies Search Component, etc...">
+
+	<!-- CSS Libraries. This folder holds all of the *.css, *.min.css & *.map files. 
+	     The /3.3.7/ folder ensures that versions of those files aren't intermixed in the future, when new versions of the libraries are released. -->
+	<link rel="stylesheet" type="text/css" href="libs/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/global.css">
+	<link rel="stylesheet" type="text/css" href="css/movieSearchComponent.css">
+
+</head>
+<body>
+	<!-- Main Web App -->
+
+	<!-- Oh I love clean, commented, bug-free namespaced code! Don't you? :) -->
+	<div class="movieSearchComponent">
+		Search for your favorite movie: 
+		<!-- <form> Since we're using Ajax here, we don't need this form tag. We aren't using POST-BACKs + full-page refreshes, which is what the <form> tag is for. -->
+			<input type="text" id="movieSearchBox" placeholder="Search for a movie"> <!-- These attributes aren't necessary for Ajax: name="" value="" -->
+			<button id="reset">Reset</button>
+		<!-- </form> -->
+		If you&rsquo;re wondering where the search button went, I can do some really fun stuff with Ajax!
+
+		<div id="ajaxResultsMovies"></div>
+
+		<!-- If I wanted to use a JS templating engine, I would pick from one off of this list: http://www.creativebloq.com/web-design/templating-engines-9134396 They are all doing string replacements in some fashion or another. So let's make a plain vanilla JS string templating engine. Once you know the core concepts, you can use whatever library that you want. Basically, I'm writing my own templating engine here for simplicity, illustrative purposes & speed of code execution. -->
+		<script type="text/template" id="htmlTemplate">
+			<div id="movie-%I%" class="movie col-md-2" style="display:none;">
+				<div class="overlay %OVERLAY_COLOR_CLASS% hidden">
+					<div><b>Released:</b> %RELEASE_DATE%</div>
+					<div><strong>Avg. Star Rating:</strong> %VOTE_AVERAGE%</div>
+				</div>
+				<img src="%POSTER_URL%" class="poster">
+				<div class="title">%TITLE%</div>
+			</div>
+		</script>
+	</div>
+
+	<!-- Bottom of the page JS boosts SEO as the top of the page can be crawled faster by search bots, without having any JS ad blocking URLs prevent the page from rendering out when the page is being crawled. -->
+	<footer>
+		<!-- Page specific footer code would go here, like this: -->
+		<div class="copyright">Copyright &copy; 2016, Brian Kueck. All Rights Reserved</div>
+
+		<!-- This tag can be hidden using CSS. -->
+		<div class="hidden">
+			<!-- JS Libraries -->
+
+			<!-- The problem with installing libraries into /js/ is that whenever we need to search for something in a .js file, it will scan hundreds of /js/libs/*.js files. 
+				There usually isn't an easy way to exclude those from search filters in HTML Editors. So it's better to create a /libs/ folder structure, which can house these files: /libs/libraryName/version_Major.minor.release/libraryName.min.js file. It's logical & this makes it easy to delete folders, whenever new versions of each library are released.
+			-->
+			<script src="libs/jquery/3.1.0/jquery.min.js"></script>
+
+			<!-- JS files, which usually need to have the JS libraries loaded before these scripts are called. -->
+			<!-- We aren't using a global for this demo. So we're going to use a named "movieSearchComponent.js" file, instead of this "common" file name: <script src="js/global.js"></script> -->
+			<script src="js/movieSearchComponent.js"></script>
+
+			<!-- Auto-init section for any thing, like jQuery or Angular, but we don't need this right now. My movieSearchComponent.js file is self-initializing. Go check it out!
+			<script>
+
+			</script> -->
+		</div>
+	</footer>
+</body>
+</html>
